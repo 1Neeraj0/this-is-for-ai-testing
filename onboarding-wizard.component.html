@@ -1,0 +1,45 @@
+<div class="onboarding-wizard">
+  <div class="step-container">
+    <!-- Step 1: Choose business type -->
+    <div class="step" [class.active]="currentStep === 1">
+      <h2>Choose your business type</h2>
+      <div class="business-types">
+        <button (click)="selectBusinessType('salon')">Salon</button>
+        <button (click)="selectBusinessType('repair')">Repair</button>
+        <button (click)="selectBusinessType('tutor')">Tutor</button>
+        <button (click)="selectBusinessType('other')">Other</button>
+      </div>
+    </div>
+    <!-- Step 2: Add basic info -->
+    <div class="step" [class.active]="currentStep === 2">
+      <h2>Add basic information</h2>
+      <form [formGroup]="businessInfoForm">
+        <label>Business Name:</label>
+        <input formControlName="businessName" />
+        <label>City:</label>
+        <input formControlName="city" />
+        <label>Working Hours:</label>
+        <input formControlName="workingHours" />
+      </form>
+    </div>
+    <!-- Step 3: Explain WhatsApp connection -->
+    <div class="step" [class.active]="currentStep === 3">
+      <h2>How WhatsApp connection works</h2>
+      <ul>
+        <li>We will read your WhatsApp messages</li>
+        <li>We will extract booking information</li>
+        <li>We will send reminders to your customers</li>
+      </ul>
+    </div>
+    <!-- Step 4: Confirmation -->
+    <div class="step" [class.active]="currentStep === 4">
+      <h2>Confirmation</h2>
+      <p>You're all set! Your onboarding is complete.</p>
+      <button (click)="completeOnboarding()">Next</button>
+    </div>
+  </div>
+  <div class="step-controls">
+    <button (click)="previousStep()" [disabled]="currentStep === 1">Previous</button>
+    <button (click)="nextStep()" [disabled]="currentStep === 4">Next</button>
+  </div>
+</div>

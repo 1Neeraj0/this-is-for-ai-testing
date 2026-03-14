@@ -1,0 +1,51 @@
+<div class="dashboard">
+  <div class="today-summary">
+    <h2>Today's Summary</h2>
+    <p>Number of bookings today: {{ bookingsToday }}</p>
+    <p>No-shows risk: {{ noShowsRisk }}</p>
+    <p>Next 3 upcoming appointments:</p>
+    <ul>
+      <li *ngFor="let appointment of upcomingAppointments">{{ appointment }}</li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a routerLink="bookings" routerLinkActive="active">Bookings</a></li>
+      <li><a routerLink="customers" routerLinkActive="active">Customers</a></li>
+      <li><a routerLink="messages" routerLinkActive="active">Messages</a></li>
+    </ul>
+    <div [ngSwitch]="selectedTab">
+      <div *ngSwitchCase="'bookings'">
+        <h2>Bookings</h2>
+        <ul>
+          <li *ngFor="let booking of bookings">
+            <span>{{ booking.customerName }}</span>
+            <span>{{ booking.service }}</span>
+            <span>{{ booking.date | date }}</span>
+            <span>{{ booking.status }}</span>
+          </li>
+        </ul>
+      </div>
+      <div *ngSwitchCase="'customers'">
+        <h2>Customers</h2>
+        <ul>
+          <li *ngFor="let customer of customers">
+            <span>{{ customer.name }}</span>
+            <span>{{ customer.lastBookingDate | date }}</span>
+            <span>{{ customer.totalVisits }}</span>
+          </li>
+        </ul>
+      </div>
+      <div *ngSwitchCase="'messages'">
+        <h2>Messages</h2>
+        <ul>
+          <li *ngFor="let message of messages">
+            <span>{{ message.customerName }}</span>
+            <span>{{ message.service }}</span>
+            <span>{{ message.date | date }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
