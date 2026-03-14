@@ -1,0 +1,21 @@
+<div class="booking-detail-view">
+  <h1>Booking Detail</h1>
+  <div class="booking-info">
+    <p>Customer Name: {{ booking.customerName }}</p>
+    <p>Customer Phone: {{ booking.customerPhone }}</p>
+    <p>Service: {{ booking.service }}</p>
+    <p>Date: {{ booking.date }}</p>
+    <p>Time: {{ booking.time }}</p>
+    <p>Location: {{ booking.location }}</p>
+    <p>Price: {{ booking.price }}</p>
+    <p>Advance Paid: {{ booking.advancePaid }}</p>
+  </div>
+  <div class="status-timeline">
+    <p *ngFor="let status of booking.statusTimeline">{{ status }}</p>
+  </div>
+  <div class="actions">
+    <button (click)="rescheduleBooking()">Reschedule</button>
+    <button (click)="markAsCompleted()">Mark as Completed</button>
+    <button (click)="cancelBooking()">Cancel</button>
+  </div>
+</div>
